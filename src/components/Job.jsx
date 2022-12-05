@@ -3,6 +3,10 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { FcLikePlaceholder, FcLike } from "react-icons/fc";
 import { useState } from "react";
+import {
+  addToFavouritesAction,
+  removeFromFavouritesAction,
+} from "../redux/actions";
 
 const Job = ({ data }) => {
   //we need to use useDispatch hook to allow this component to dispatch actions!
@@ -27,20 +31,22 @@ const Job = ({ data }) => {
           <FcLike
             style={{ cursor: "pointer" }}
             onClick={() => {
-              dispatch({
-                type: "REMOVE_FROM_FAVOURITES",
-                payload: data.company_name,
-              });
+              // dispatch({
+              //   type: "REMOVE_FROM_FAVOURITES",
+              //   payload: data.company_name,
+              // });
+              dispatch(removeFromFavouritesAction(data));
               setIsClicked(!isClicked);
             }}
           />
         ) : (
           <FcLikePlaceholder
             onClick={() => {
-              dispatch({
-                type: "ADD_TO_FAVOURITES",
-                payload: data.company_name,
-              });
+              // dispatch({
+              //   type: "ADD_TO_FAVOURITES",
+              //   payload: data.company_name,
+              // });
+              dispatch(addToFavouritesAction(data));
               setIsClicked(!isClicked);
             }}
             style={{ cursor: "pointer" }}
