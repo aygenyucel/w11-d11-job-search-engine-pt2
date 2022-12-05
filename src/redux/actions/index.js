@@ -1,6 +1,10 @@
+export const ADD_TO_FAVOURITES = "ADD_TO_FAVOURITES";
+export const REMOVE_FROM_FAVOURITES = "REMOVE_FROM_FAVOURITES";
+export const GET_JOBS = "GET_JOBS";
+
 export const addToFavouritesAction = (data) => {
   return {
-    type: "ADD_TO_FAVOURITES",
+    type: ADD_TO_FAVOURITES,
     payload: data.company_name,
   };
 };
@@ -21,7 +25,7 @@ export const getJobsAction = (query) => {
       if (response.ok) {
         const { data } = await response.json();
         dispatch({
-          type: "GET_JOBS",
+          type: GET_JOBS,
           payload: data,
         });
       } else {
